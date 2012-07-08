@@ -17,10 +17,11 @@ It is inspired by [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) but doe
 
 ### Aliases
 
-1. 'll' instead of 'ls -FGlh'
-2. 'la' instead of 'ls -FGlha'
-3. 'l' instead of 'ls -FG'
-4. 'tree' to show a treemap of your current directory
+1. 'ls' aliases
+   * 'll' instead of 'ls -FGlh'
+   * 'la' instead of 'ls -FGlha'
+   * 'l' instead of 'ls -FG'
+2. 'tree' to show a treemap of your current directory
 5. '..' for 'cd ..'
 6. '...' for 'cd ../..'
 7. '-' for 'cd -'
@@ -32,7 +33,7 @@ It is inspired by [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) but doe
 1. Modified CDPATH, so you can do cd DIRECTORY_IN_HOME_FOLDER anywhere
 2. Colored the man pages
 3. Modified some bash settings: ignore case, turn off the bell sound, single tab completion
-4. Changed the prompt to have colors + include the git branch you are currently working in, if you are in a git repository directory
+4. Changed the prompt include username and path + the git branch you are currently working in, if you are in a git repository directory
 
 ## Credits
 

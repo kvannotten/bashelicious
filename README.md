@@ -22,11 +22,13 @@ It is inspired by [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) but doe
    * 'la' instead of 'ls -FGlha'
    * 'l' instead of 'ls -FG'
 2. 'tree' to show a treemap of your current directory
-5. '..' for 'cd ..'
-6. '...' for 'cd ../..'
-7. '-' for 'cd -'
-8. 'compress' to tar and gzip a file or directory
-9. 'uncompress' to do the opposite of *8*
+3. 'cd' aliases
+   * '..' for 'cd ..'
+   * '...' for 'cd ../..'
+   * '-' for 'cd -'
+4. Utilities
+   * 'compress' to tar and gzip a file or directory
+   * 'uncompress' to untar and ungzip a file
 
 ### Tweaks
 

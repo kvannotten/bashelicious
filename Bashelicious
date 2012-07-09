@@ -13,6 +13,7 @@ alias -- -="cd -"
 # Bashelicious methods
 function compress() { /usr/bin/tar -jcvf "$@" ;}
 function decompress() { /usr/bin/tar -jxvf "$@" ;}
+function findproc() { ps aux | grep $1 | grep -v grep ;}
 
 function parse_git_branch_and_add_brackets {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'

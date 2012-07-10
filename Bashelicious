@@ -6,7 +6,7 @@ export BASHELICIOUS_DIR=$HOME/.bashelicious
 export CDPATH=$CDPATH:.:~
 
 # Bashelicious aliases
-alias ls="ls -FG --color=auto --group-directories-first"
+alias ls="ls -FG"
 alias ll="ls -lh"
 alias la="ls -Hlha"
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
@@ -17,8 +17,8 @@ alias nano="nano -f"
 alias sshtunnel="sh $BASHELICIOUS_DIR/extra/sshtunnel.sh"
 
 # Bashelicious methods
-function compress() { /usr/bin/tar -jcvf "$@" ;}
-function decompress() { /usr/bin/tar -jxvf "$@" ;}
+function compress() { tar -jcvf "$@" ;}
+function decompress() { tar -jxvf "$@" ;}
 function findproc() { ps aux | grep -i $1 | grep -v grep ;}
 
 function parse_git_branch_and_add_brackets {

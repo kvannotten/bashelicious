@@ -44,5 +44,8 @@ bind Space:magic-space #auto expand ! variants upon space
 shopt -s cdspell # correct small spelling errors automagically
 shopt -s histappend # write to a shared history file for all shells
 
+# Completions
+[[ -e $BASHELICIOUS_DIR/extra/completions.sh ]] && . $BASHELICIOUS_DIR/extra/completions.sh
+
 # Prompt layout
 PS1="\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\[\e[1;32m\]\$(parse_git_branch_and_add_brackets) \[\e[1;32m\]\$\[\e[m\] "

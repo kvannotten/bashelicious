@@ -7,11 +7,11 @@ It is inspired by [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) but doe
 ## Install
 
 1. Checkout this repository
-2. Run `rake install` in the **Bashelicious** directory
+2. Run `setup install`
 
 ## Uninstall
 
-1. Run `rake uninstall` in the **Bashelicious** directory
+1. Run `setup uninstall`
 
 ## Features
 
@@ -29,6 +29,7 @@ It is inspired by [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) but doe
 4. Utilities
    * 'compress' to tar and gzip a file or directory
    * 'uncompress' to untar and ungzip a file
+   * 'findproc' shorthand for a ps aux | grep ...
 
 ### Tweaks
 

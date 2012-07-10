@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+######################
+# Bashelicious Setup #
+######################
+
+trap 'cleanup; exit 1' HUP INT QUIT TERM
+LOGGING="true"
+INSTALL_DIR=$HOME/.bashelicious
+BASHELICIOUS_FILE=${INSTALL_DIR}/bashelicious
+
+BASHRC_LINE="[[ -f ${BASHELICIOUS_FILE} ]] && . ${BASHELICIOUS_FILE}"
+
+log_message() {
+	[[ "true" == "$LOGGING" ]] && echo ":: $1"
+}
+
+check_bashrc() {
+	echo $(cat $HOME/.bashrc | grep -n "${BASHRC_LINE}" | awk -F\: '{ print $1; }')
+}
+
+cleanup() {
+	LINE=$(check_bashrc)
+	[[ -n "${LINE}" ]] && sed -i "${LINE}d" $HOME/.bashrc			
+	log_message "Finished removing bashrc"
+	
+	log_message "Removing bashelicious directory"
+	rm -rf $INSTALL_DIR
+	log_message "Removing bashelicous from bashrc"
+}
+
+install() {
+	log_message "Installing bashelicious"
+	if [ ! -d "$INSTALL_DIR" ]
+	then
+		mkdir $INSTALL_DIR
+		mkdir $INSTALL_DIR/extra		
+		log_message "Created bashelicious dir"	
+		
+		cp Bashelicious $INSTALL_DIR/bashelicious
+		cp extra/* $INSTALL_DIR/extra/
+		log_message "Copied scripts to the bashelicious dir"		
+	else
+		log_message "Bashelicious dir already exists (skipping)"			
+	fi
+	
+	LINE=$(check_bashrc)
+	if [[ -z "${LINE}" ]]
+	then
+		log_message "Adding bashelicous to bashrc"
+		echo ${BASHRC_LINE} >> $HOME/.bashrc	
+	fi
+	
+	echo ""
+	echo "# Finished installing basheclious"
+	echo "# Restart your terminal or source your .bashrc file to load bashelicious"
+	
+}
+
+
+case "$1" in
+	install)
+		install		
+		;;
+	uninstall)
+		cleanup
+		;;
+	reinstall)
+		cleanup
+		install
+		;;
+	*)
+		echo "Usage: $(basename $0) {install | uninstall | reinstall}"
+		exit 1
+		;;
+esac
+

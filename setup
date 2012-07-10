@@ -21,7 +21,8 @@ check_bashrc() {
 
 cleanup() {
 	LINE=$(check_bashrc)
-	[[ -n "${LINE}" ]] && sed -i -e "${LINE}d" $HOME/.bashrc # hack to make it work on OS X		
+	[[ -n "${LINE}" ]] && sed -i -e "${LINE}d" $HOME/.bashrc # hack to make it work on OS X	
+	[[ -e "$HOME/.bashrc-e" ]] && rm -f $HOME/.bashrc-e	
 	log_message "Finished removing bashrc"
 	
 	log_message "Removing bashelicious directory"

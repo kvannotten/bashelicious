@@ -38,6 +38,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'      # begin underline
 bind "set completion-ignore-case on" # This ignores case in bash completion
 bind "set bell-style none" # Turn off bell
 bind "set show-all-if-ambiguous On" # Single tab completion
+bind Space:magic-space #auto expand ! variants upon space
 
 # Prompt layout
 PS1="\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\[\e[1;32m\]\$(parse_git_branch_and_add_brackets) \[\e[1;32m\]\$\[\e[m\] "

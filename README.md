@@ -8,6 +8,7 @@ It is inspired by [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) but doe
 
 1. Checkout this repository
 2. Run `setup install`
+   * In OS X you have to edit the `~/.bash_profile` file and add the following line: `[[ -s ~/.bashrc ]] && source ~/.bashrc`
 
 ## Uninstall
 
@@ -20,7 +21,6 @@ It is inspired by [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) but doe
 1. 'ls' aliases
    * 'll' instead of 'ls -FGlh'
    * 'la' instead of 'ls -FGlha'
-   * 'l' instead of 'ls -FG'
 2. 'tree' to show a treemap of your current directory
 3. 'cd' aliases
    * '..' for 'cd ..'

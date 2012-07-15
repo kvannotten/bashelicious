@@ -23,10 +23,7 @@ for PLUGIN in $(ls $BASHELICIOUS_DIR/plugins/*.plugin.sh)
 do
 	j=${PLUGIN##*/}
 	j=${j%.plugin.sh}
-	if [[ -f $PLUGINSTATUS && ! -z $(cat $PLUGINSTATUS | grep $j) ]]; then
-		#plugin is disabled
-		echo "The plugin $PLUGIN is disabled."
-	else
+	if [[ ! -f $PLUGINSTATUS || -z $(cat $PLUGINSTATUS | grep $j) ]]; then
 		bashelicious_import plugins/$(basename $PLUGIN)
 	fi
 done

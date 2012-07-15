@@ -14,6 +14,12 @@ function bashelicious {
 	case "$1" in
 		reload)
 			[[ -e $HOME/.bashrc ]] && . $HOME/.bashrc
+			if [[ -f $PLUGINSTATUS ]]; then
+				echo "${bold}The following plugins are disabled:${normal}"
+				while read p; do
+					echo $p
+				done < $PLUGINSTATUS 
+			fi
 			;;
 		plugins)
 			if [[ -z $2 && -z $3 ]]; then
@@ -51,6 +57,7 @@ function bashelicious {
 					fi
 					echo "Disabling plugin $3"
 					echo $3 >> $PLUGINSTATUS;
+					echo "You have to restart your terminal for the changes to take effect."
 				;;
 				*)
 				echo "Usage: ${bold}bashelicious plugins${normal} { list | enable | disable }"

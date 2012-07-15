@@ -17,9 +17,18 @@ bashelicious_import lib/misc.sh
 bashelicious_import lib/functions.sh
 
 # Load plugins
+PLUGINSTATUS=$BASHELICIOUS_DIR/plugins/.disabled
+
 for PLUGIN in $(ls $BASHELICIOUS_DIR/plugins/*.plugin.sh)
 do
-	bashelicious_import plugins/$(basename $PLUGIN)
+	j=${PLUGIN##*/}
+	j=${j%.plugin.sh}
+	if [[ -f $PLUGINSTATUS && ! -z $(cat $PLUGINSTATUS | grep $j) ]]; then
+		#plugin is disabled
+		echo "The plugin $PLUGIN is disabled."
+	else
+		bashelicious_import plugins/$(basename $PLUGIN)
+	fi
 done
 
 unset -f bashelicious_import

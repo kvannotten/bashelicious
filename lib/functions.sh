@@ -9,25 +9,56 @@ function parse_git_branch_and_add_brackets {
 function bashelicious {
 	bold=`tput bold`;
 	normal=`tput sgr0`;
+	PLUGINSTATUS=$BASHELICIOUS_DIR/plugins/.disabled
+	
 	case "$1" in
 		reload)
 			[[ -e $HOME/.bashrc ]] && . $HOME/.bashrc
 			;;
-		list)
-			echo "${bold}Plugins for Bashelicous${normal}";
-			FILES="$HOME/.bashelicious/plugins"
-			for i in $FILES/*
-			do
-				if [[ -f $i ]]; then
-					j=${i##*/}
-					j=${j%.plugin.sh}
-					echo " [*] ${j}"
-				fi
-			done
-			echo ""
+		plugins)
+			if [[ -z $2 && -z $3 ]]; then
+				echo "Usage: ${bold}bashelicious plugins${normal} { list | enable | disable }";
+				return;
+			fi
+			
+			case "$2" in
+				list)
+					echo "${bold}Plugins for Bashelicous${normal}";
+					FILES="$BASHELICIOUS_DIR/plugins"
+					for i in $FILES/*
+					do
+						if [[ -f $i ]]; then
+							j=${i##*/}
+							j=${j%.plugin.sh}
+							if [[ -f $PLUGINSTATUS && ! -z $(cat $PLUGINSTATUS | grep $j) ]]; then
+								echo " [ ] ${j}"
+							else
+								echo " [*] ${j}"
+							fi
+						fi
+					done
+					;;
+				enable)
+					if [[ -f $PLUGINSTATUS ]]; then
+						echo "Enabling plugin $3"
+						sed -i -e /$3/d $PLUGINSTATUS
+					fi
+				;;
+				
+				disable)
+					if [[ ! -f $PLUGINSTATUS ]]; then
+						touch $PLUGINSTATUS
+					fi
+					echo "Disabling plugin $3"
+					echo $3 >> $PLUGINSTATUS;
+				;;
+				*)
+				echo "Usage: ${bold}bashelicious plugins${normal} { list | enable | disable }"
+				;;
+			esac
 			;;
 		*)
-			echo "Usage: ${bold}bashelicous${normal} {reload list}"
+			echo "Usage: ${bold}bashelicous${normal} { reload | plugins}"
 			;;
 	esac
 }

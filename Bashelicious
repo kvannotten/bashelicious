@@ -21,3 +21,5 @@ for PLUGIN in $(ls $BASHELICIOUS_DIR/plugins/*.plugin.sh)
 do
 	bashelicious_import plugins/$(basename $PLUGIN)
 done
+
+unset -f bashelicious_import

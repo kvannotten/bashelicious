@@ -61,4 +61,5 @@ Bashelicious is written by Kristof Vannotten and Ben Van Houtven
 Some of these *tweaks* have been taken from random blogs. If you think you should be credited for a certain one, let me know and I will add your name here.
 
 Code: Ben Van Houtven and Kristof Vannotten
+
 Readme: Jitse De Wandel

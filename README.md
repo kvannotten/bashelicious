@@ -52,6 +52,13 @@ It is inspired by [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) but doe
 Custom functionality can be added to Bashelicious using the plugin system. You can do so by adding files ending with '.plugin.sh' to the plugins folder (~/.bashelicious/plugins).
 These will be sourced whenever a new terminal is started. Optionally you can manually source your .bashrc file.
 
+## Authors
+
+Bashelicious is written by Kristof Vannotten and Ben Van Houtven
+
 ## Credits
 
 Some of these *tweaks* have been taken from random blogs. If you think you should be credited for a certain one, let me know and I will add your name here.
+
+Code: Ben Van Houtven and Kristof Vannotten
+Readme: Jitse De Wandel

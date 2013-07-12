@@ -10,5 +10,5 @@ alias -- -="cd -"
 alias nano="nano -f"
 
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0" # change to en1 if needed
+alias ips="for interface in $(ifconfig | perl -nle '/^(\w+\d*)/ && print $1'); do echo $interface; ifconfig $interface | perl -nle '/(\d+\.\d+\.\d+\.\d+)/ && print $1'; echo ''; done"
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
